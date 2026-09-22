@@ -1,0 +1,33 @@
+{
+  "fixture": "readme-i18n-kit-pr-3-8-semantic-baseline",
+  "method": "explicit-reference + auditable causal-language rules",
+  "purpose": "establish a conservative non-LLM baseline before provider comparison",
+  "expectations": [
+    {
+      "source": "pr-4",
+      "target": "pr-5",
+      "expected": "refines",
+      "baseline_may_return": ["responds_to", "refines"],
+      "note": "The target explicitly describes failure of the prior retry and changes the repair mechanism; the boundary between response and refinement is semantically close."
+    },
+    {
+      "source": "pr-6",
+      "target": "pr-8",
+      "expected": "refines",
+      "baseline_may_return": ["refines", "responds_to"],
+      "note": "The target explicitly says the #6 masking path still left glossary leak-through and separates the mechanisms."
+    },
+    {
+      "source": "pr-7",
+      "target": "pr-8",
+      "expected": "no-direct-edge",
+      "baseline_may_return": ["unknown"],
+      "note": "A related-context reference alone must not create a direct semantic edge."
+    }
+  ],
+  "limitations": [
+    "Keyword rules cannot reliably distinguish responds_to from refines when a refinement is motivated by a failure.",
+    "Rules do not understand paraphrase beyond the small explicit pattern set.",
+    "This baseline is a lower bound for later semantic providers, not a production reasoner."
+  ]
+}
