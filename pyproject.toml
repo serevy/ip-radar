@@ -1,0 +1,8 @@
+[project]
+name = "ip-radar"
+version = "0.0.0"
+description = "Experimental temporal provenance and candidate-lineage reconstruction from development history"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
