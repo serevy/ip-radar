@@ -54,3 +54,10 @@ Durable decisions live under [docs/records/](docs/records/). PDDR is evidence-ba
 ## Status
 
 **Experimental / PoC.** This repository exists to test the hypothesis, not to claim it has already been proven.
+
+
+## License
+
+IP Radar is released under the [MIT License](LICENSE).
+
+The vendored PDDR Kit files under `.pddr/` originate from [PDDR Kit](https://github.com/serevy/pddr-kit), which is also distributed under the MIT License.
