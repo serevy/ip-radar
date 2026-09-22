@@ -40,3 +40,4 @@ def test_pair_evaluation_does_not_pretend_to_predict_semantics():
     assert metrics.recovered_pairs == 1
     assert metrics.false_pairs == 0
     assert metrics.pair_recall == 0.5
+    assert metrics.pair_precision == 1.0
