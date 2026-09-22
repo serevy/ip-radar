@@ -1,0 +1,32 @@
+{
+  "fixture": "readme-i18n-kit-pr-3-8",
+  "repository": "serevy/readme-i18n-kit",
+  "freeze": {
+    "first_pr": 3,
+    "last_pr": 8,
+    "future_artifacts_allowed": false
+  },
+  "artifacts": [
+    {"id": "pr-3", "kind": "pull_request", "occurred_at": "2026-09-21T00:00:00Z", "title": "Detect source-language residue in the quality gate"},
+    {"id": "pr-4", "kind": "pull_request", "occurred_at": "2026-09-21T01:00:00Z", "title": "Repair only lines with detected untranslated residue"},
+    {"id": "pr-5", "kind": "pull_request", "occurred_at": "2026-09-21T02:00:00Z", "title": "Use a dedicated repair prompt instead of repeating the same request"},
+    {"id": "pr-6", "kind": "pull_request", "occurred_at": "2026-09-21T03:00:00Z", "title": "Mask literal identity terms before translation"},
+    {"id": "pr-7", "kind": "pull_request", "occurred_at": "2026-09-21T04:00:00Z", "title": "Anchor structural Markdown prefix tokens"},
+    {"id": "pr-8", "kind": "pull_request", "occurred_at": "2026-09-21T05:00:00Z", "title": "Separate identity preservation from translation glossary enforcement"}
+  ],
+  "expected_edges": [
+    {"source": "pr-3", "target": "pr-4", "kind": "responds_to"},
+    {"source": "pr-4", "target": "pr-5", "kind": "refines"},
+    {"source": "pr-5", "target": "pr-6", "kind": "refines"},
+    {"source": "pr-6", "target": "pr-7", "kind": "responds_to"},
+    {"source": "pr-6", "target": "pr-8", "kind": "refines"}
+  ],
+  "expected_family": {
+    "label": "structured-document translation preservation",
+    "notes": "One evolving design family, not six independent invention candidates."
+  },
+  "abstention": {
+    "patentability": "unknown",
+    "reason": "fixture evaluates provenance reconstruction, not legal novelty"
+  }
+}
