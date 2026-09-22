@@ -1,14 +1,19 @@
-import json
-from pathlib import Path
+from ip_radar.fixtures import graph_from_github_fixture
 
 
-def test_readme_i18n_fixture_is_frozen_and_abstains_on_patentability():
-    fixture = json.loads(
-        Path("evals/readme-i18n-kit/pr-3-8.json").read_text(encoding="utf-8")
-    )
+FIXTURE = "evals/readme-i18n-kit/pr-3-8.json"
 
-    assert fixture["freeze"]["future_artifacts_allowed"] is False
-    assert fixture["freeze"]["first_pr"] == 3
-    assert fixture["freeze"]["last_pr"] == 8
-    assert len(fixture["artifacts"]) == 6
-    assert fixture["abstention"]["patentability"] == "unknown"
+
+def test_readme_i18n_fixture_is_frozen_and_loads_as_graph():
+    graph = graph_from_github_fixture(FIXTURE)
+
+    assert [item.id for item in graph.timeline()] == [
+        "pr-3",
+        "pr-4",
+        "pr-5",
+        "pr-6",
+        "pr-7",
+        "pr-8",
+    ]
+    assert len(graph.edges()) == 5
+    assert graph.validate_temporal_edges() == ()

@@ -7,19 +7,74 @@
     "future_artifacts_allowed": false
   },
   "artifacts": [
-    {"id": "pr-3", "kind": "pull_request", "occurred_at": "2026-09-21T00:00:00Z", "title": "Detect source-language residue in the quality gate"},
-    {"id": "pr-4", "kind": "pull_request", "occurred_at": "2026-09-21T01:00:00Z", "title": "Repair only lines with detected untranslated residue"},
-    {"id": "pr-5", "kind": "pull_request", "occurred_at": "2026-09-21T02:00:00Z", "title": "Use a dedicated repair prompt instead of repeating the same request"},
-    {"id": "pr-6", "kind": "pull_request", "occurred_at": "2026-09-21T03:00:00Z", "title": "Mask literal identity terms before translation"},
-    {"id": "pr-7", "kind": "pull_request", "occurred_at": "2026-09-21T04:00:00Z", "title": "Anchor structural Markdown prefix tokens"},
-    {"id": "pr-8", "kind": "pull_request", "occurred_at": "2026-09-21T05:00:00Z", "title": "Separate identity preservation from translation glossary enforcement"}
+    {
+      "id": "pr-3",
+      "kind": "pull_request",
+      "occurred_at": "2026-09-21T00:00:00Z",
+      "title": "Detect source-language residue in the quality gate"
+    },
+    {
+      "id": "pr-4",
+      "kind": "pull_request",
+      "occurred_at": "2026-09-21T01:00:00Z",
+      "title": "Repair only lines with detected untranslated residue"
+    },
+    {
+      "id": "pr-5",
+      "kind": "pull_request",
+      "occurred_at": "2026-09-21T02:00:00Z",
+      "title": "Use a dedicated repair prompt instead of repeating the same request"
+    },
+    {
+      "id": "pr-6",
+      "kind": "pull_request",
+      "occurred_at": "2026-09-21T03:00:00Z",
+      "title": "Mask literal identity terms before translation"
+    },
+    {
+      "id": "pr-7",
+      "kind": "pull_request",
+      "occurred_at": "2026-09-21T04:00:00Z",
+      "title": "Anchor structural Markdown prefix tokens"
+    },
+    {
+      "id": "pr-8",
+      "kind": "pull_request",
+      "occurred_at": "2026-09-21T05:00:00Z",
+      "title": "Separate identity preservation from translation glossary enforcement"
+    }
   ],
   "expected_edges": [
-    {"source": "pr-3", "target": "pr-4", "kind": "responds_to"},
-    {"source": "pr-4", "target": "pr-5", "kind": "refines"},
-    {"source": "pr-5", "target": "pr-6", "kind": "refines"},
-    {"source": "pr-6", "target": "pr-7", "kind": "responds_to"},
-    {"source": "pr-6", "target": "pr-8", "kind": "refines"}
+    {
+      "source": "pr-3",
+      "target": "pr-4",
+      "kind": "responds_to",
+      "rationale": "repair follows residue detection"
+    },
+    {
+      "source": "pr-4",
+      "target": "pr-5",
+      "kind": "refines",
+      "rationale": "dedicated prompt refines failed same-prompt retry"
+    },
+    {
+      "source": "pr-5",
+      "target": "pr-6",
+      "kind": "refines",
+      "rationale": "literal masking refines repair after mixed-line failures"
+    },
+    {
+      "source": "pr-6",
+      "target": "pr-7",
+      "kind": "responds_to",
+      "rationale": "structural-prefix failure observed after literal-mask dogfood"
+    },
+    {
+      "source": "pr-6",
+      "target": "pr-8",
+      "kind": "refines",
+      "rationale": "identity glossary leak-through refines literal preservation"
+    }
   ],
   "expected_family": {
     "label": "structured-document translation preservation",
@@ -28,5 +83,43 @@
   "abstention": {
     "patentability": "unknown",
     "reason": "fixture evaluates provenance reconstruction, not legal novelty"
-  }
+  },
+  "github_pull_requests": [
+    {
+      "number": 3,
+      "title": "feat: source languageの未翻訳残留をQuality Gateで検出",
+      "created_at": "2026-09-21T09:47:57Z",
+      "html_url": "https://github.com/serevy/readme-i18n-kit/pull/3"
+    },
+    {
+      "number": 4,
+      "title": "feat: 未翻訳残留を検出した行だけ自動repairする",
+      "created_at": "2026-09-21T13:54:49Z",
+      "html_url": "https://github.com/serevy/readme-i18n-kit/pull/4"
+    },
+    {
+      "number": 5,
+      "title": "fix: source residue repairに専用promptを使う",
+      "created_at": "2026-09-21T15:25:00Z",
+      "html_url": "https://github.com/serevy/readme-i18n-kit/pull/5"
+    },
+    {
+      "number": 6,
+      "title": "fix: literal identity termをmaskして混在行の翻訳を安定化",
+      "created_at": "2026-09-21T16:30:49Z",
+      "html_url": "https://github.com/serevy/readme-i18n-kit/pull/6"
+    },
+    {
+      "number": 7,
+      "title": "fix: heading/list/blockquoteの先頭Markdown構文を固定",
+      "created_at": "2026-09-21T18:43:51Z",
+      "html_url": "https://github.com/serevy/readme-i18n-kit/pull/7"
+    },
+    {
+      "number": 8,
+      "title": "fix: identity glossaryをmask-onlyにして短語の誤置換を防ぐ",
+      "created_at": "2026-09-21T20:02:38Z",
+      "html_url": "https://github.com/serevy/readme-i18n-kit/pull/8"
+    }
+  ]
 }
