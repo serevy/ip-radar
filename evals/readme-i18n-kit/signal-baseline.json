@@ -1,0 +1,36 @@
+{
+  "fixture": "readme-i18n-kit-pr-3-8-signal-baseline",
+  "source_fixture": "evals/readme-i18n-kit/pr-3-8.json",
+  "method": "deterministic explicit PR references only",
+  "observed_pairs": [
+    ["pr-3", "pr-4"],
+    ["pr-4", "pr-5"],
+    ["pr-5", "pr-6"],
+    ["pr-6", "pr-7"],
+    ["pr-6", "pr-8"],
+    ["pr-7", "pr-8"]
+  ],
+  "expected_pairs": [
+    ["pr-3", "pr-4"],
+    ["pr-4", "pr-5"],
+    ["pr-5", "pr-6"],
+    ["pr-6", "pr-7"],
+    ["pr-6", "pr-8"]
+  ],
+  "metrics": {
+    "expected_pairs": 5,
+    "recovered_pairs": 5,
+    "false_pairs": 1,
+    "pair_recall": 1.0,
+    "pair_precision": 0.8333333333
+  },
+  "false_pair_notes": {
+    "pr-7->pr-8": "PR #8 explicitly references #7 as related context, but the frozen semantic lineage does not classify it as a direct expected edge."
+  },
+  "interpretation": [
+    "Explicit references recover all frozen candidate pairs in this small fixture.",
+    "Perfect pair recall does not imply semantic relationship accuracy.",
+    "The extra #7 -> #8 pair demonstrates why explicit references must remain evidence signals rather than semantic edges.",
+    "This fixture is unusually well-documented and must not be treated as representative of ordinary repositories."
+  ]
+}
