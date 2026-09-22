@@ -17,6 +17,11 @@ class SignalMetrics:
     def pair_recall(self) -> float:
         return self.recovered_pairs / self.expected_pairs if self.expected_pairs else 1.0
 
+    @property
+    def pair_precision(self) -> float:
+        observed_pairs = self.recovered_pairs + self.false_pairs
+        return self.recovered_pairs / observed_pairs if observed_pairs else 1.0
+
 
 def evaluate_candidate_pairs(
     signals: tuple[RelationshipSignal, ...],
