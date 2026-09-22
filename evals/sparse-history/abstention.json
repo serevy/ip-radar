@@ -1,0 +1,17 @@
+{
+  "fixture": "sparse-third-party-history",
+  "purpose": "abstention behavior under sparse PR descriptions",
+  "artifacts": [
+    {"id": "change-a", "kind": "pull_request", "title": "Fix duplicate inspector members", "body_density": "high", "changed_paths": ["Editor/Internal/ReflectionHelper.cs"]},
+    {"id": "change-b", "kind": "pull_request", "title": "Namespace cleanup", "body_density": "none", "changed_paths": ["Editor/Internal/ReflectionHelper.cs", "Editor/Elements/GenericField.cs"]},
+    {"id": "change-c", "kind": "pull_request", "title": "Array handling fix", "body_density": "none", "changed_paths": ["Editor/Elements/InlineEditorObjectField.cs"]}
+  ],
+  "signals": [
+    {"source": "change-a", "target": "change-b", "signal": "shared_paths", "evidence": "Editor/Internal/ReflectionHelper.cs"}
+  ],
+  "expected": {
+    "direct_semantic_edges": [],
+    "candidate_lineage": "insufficient_evidence",
+    "reason": "shared file paths alone do not establish common technical intent or lineage"
+  }
+}
