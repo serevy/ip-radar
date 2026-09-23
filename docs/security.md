@@ -64,3 +64,21 @@ Repository text is data, never authority. Prompt-based instructions are defense 
 ## Supply chain
 
 Dependencies and GitHub Actions should be pinned and monitored. Untrusted repository or generated code must not be executed as part of semantic reasoning. Introducing such execution crosses the separate Sandbox Gate and requires a new security decision.
+
+## Performance boundary
+
+Security controls must protect the trust boundary without turning the normal path into a high-latency pipeline.
+
+**Spend latency on reasoning, not guarding.**
+
+The intended architecture is:
+
+- fast path: cached verdicts, deterministic secret/type/size/endpoint checks, and lightweight local inspection;
+- suspicious path: deeper guardrail inspection only when signals justify it;
+- incremental rescanning: unchanged artifact content should reuse a verdict keyed by content/config version where safe;
+- parallel work: independent security checks and evidence preparation should run concurrently where possible;
+- final gate: no semantic result is released until required output validation and grounding complete.
+
+Initial PoC performance hypothesis: normal-path security overhead should target p95 below 100 ms on representative local fixtures, excluding semantic model latency. This is an evaluation target, not a current performance claim.
+
+Security evaluation should report three separate dimensions: protection effectiveness, information retention, and added latency. A slower guard is not automatically safer, and a faster guard is not acceptable if it weakens the boundary.
