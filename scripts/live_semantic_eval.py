@@ -152,7 +152,7 @@ def openai_transport(payload: dict) -> dict:
 
 
 def main() -> int:
-    model = os.environ.get("IP_RADAR_LIVE_MODEL", "gpt-5.6-luna")
+    model = os.environ.get("IP_RADAR_LIVE_MODEL", "gpt-6-luna")
     provider = LLMSemanticProvider(openai_transport, model=model)
     results = []
     started = time.perf_counter()
