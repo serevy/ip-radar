@@ -29,7 +29,7 @@ The transport is intentionally specific to this evaluation and is not a general-
 
 ## Model
 
-The workflow defaults to `gpt-5.6-luna` for a low-cost first evaluation. The model ID is a manual workflow input so later comparisons can use the same harness.
+The workflow defaults to `gpt-6-luna` for a low-cost first evaluation. The model ID is a manual workflow input so later comparisons can use the same harness.
 
 ## Result
 
