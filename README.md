@@ -1,5 +1,7 @@
 # IP Radar
 
+[![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/serevy/ip-radar?utm_source=oss&utm_medium=github&utm_campaign=serevy%2Fip-radar&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)](https://coderabbit.ai)
+
 > Local-first. Evidence-first. Global-ready.
 
 IP Radar is an experimental archaeology engine for reconstructing technical decision provenance and candidate lineages from ordinary development history.
